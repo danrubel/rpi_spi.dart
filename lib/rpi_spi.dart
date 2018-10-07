@@ -18,8 +18,7 @@ class RpiSpi extends Spi {
   @override
   SpiDevice device(int controller, int chipSelectPin, int speed, int mode) {
     if (mode < 0 || mode > 3) {
-      throw new SpiException(
-          'invalid mode: $mode', controller, chipSelectPin);
+      throw new SpiException('invalid mode: $mode', controller, chipSelectPin);
     }
     int chipSelect = allocateChipSelectPin(controller, chipSelectPin);
     int fd = _setupDevice(controller, chipSelect, speed, mode);
