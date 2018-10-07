@@ -57,7 +57,7 @@ to compile the native librpi_spi_ext.so library for the rpi_spi package.
 
 Connect the following [pins on the Raspberry Pi](https://www.raspberrypi.org/documentation/usage/gpio/)
 to the following pins on the [Adafruit MCP3008](https://www.adafruit.com/product/856).
-Pi pins 13 and 15 are connected to MCP3008 input #0 for both for the example and as a predictable test input.
+Pi pins 13 and 15 are connected to MCP3008 input #0 both for the example and as a predictable test input.
 The other connected Pi pins are for controlling the MCP3008 and reading it's output values via the SPI API.
 
 | Rpi Pin                            | MCP3008                         |
