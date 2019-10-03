@@ -27,10 +27,11 @@ main(List<String> args) {
 
   // Run pub list to determine the location of the GPIO package being used
   final pub = new File.fromUri(dartSdk.uri.resolve('bin/pub'));
-  String pubOut = Process.runSync(pub.path, ['list-package-dirs']).stdout;
-  Map<String, dynamic> pubResult = jsonDecode(pubOut);
+  final pubOut =
+      Process.runSync(pub.path, ['list-package-dirs']).stdout as String;
+  final pubResult = jsonDecode(pubOut) as Map<String, dynamic>;
   assertNoPubListError(pubResult);
-  String dirName = pubResult['packages'][pkgName];
+  final dirName = pubResult['packages'][pkgName] as String;
   final pkgDir = new Directory(dirName);
   print('Building library in ${pkgDir.path}');
 
@@ -71,7 +72,7 @@ void abortIf(bool condition, String message) {
 void assertNoPubListError(Map<String, dynamic> pubResult) {
   var error = pubResult['error'];
   if (error == null) {
-    Map<String, dynamic> packages = pubResult['packages'];
+    final packages = pubResult['packages'] as Map<String, dynamic>;
     if (packages != null) {
       var rpiGpio = packages[pkgName];
       if (rpiGpio != null) {
