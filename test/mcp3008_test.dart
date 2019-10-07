@@ -8,7 +8,7 @@ import '../example/mcp3008.dart';
 import 'test_util.dart';
 
 main() {
-  final spi = new RpiSpi();
+  final spi = RpiSpi();
   runTests(spi);
   test('dispose', () => spi.dispose());
 }
@@ -23,7 +23,7 @@ void runTests(Spi spi) {
     // For these tests:
     // * pin 13 is connected to MCP3008 by a 4.7K resistor
     // * pin 15 is connected to MCP3008 by a 10K resistor.
-    gpio = new RpiGpio();
+    gpio = RpiGpio();
     pin13 = gpio.output(13);
     pin15 = gpio.output(15);
   });
@@ -33,8 +33,8 @@ void runTests(Spi spi) {
   });
 
   test('instantiate once', () async {
-    mcp3008 = new Mcp3008(spi, 0, 24);
-    await expectThrows(() => new Mcp3008(spi, 0, 24));
+    mcp3008 = Mcp3008(spi, 0, 24);
+    await expectThrows(() => Mcp3008(spi, 0, 24));
   });
 
   test('read low', () {
@@ -74,7 +74,7 @@ void runTests(Spi spi) {
 /// is greater than or equal to the given [lower] value
 /// and is less than or equal to the given [upper] value.
 Matcher betweenInclusive(int lower, int upper) =>
-    new BetweenInclusiveMatcher(lower, upper);
+    BetweenInclusiveMatcher(lower, upper);
 
 class BetweenInclusiveMatcher extends Matcher {
   final int lower;

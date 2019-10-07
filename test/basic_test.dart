@@ -6,21 +6,21 @@ import '../example/mcp3008.dart';
 import 'test_util.dart';
 
 main() {
-  final spi = new RpiSpi();
+  final spi = RpiSpi();
   runTests(spi);
   test('dispose', () => spi.dispose());
 }
 
 runTests(Spi spi) {
   test('one factory', () async {
-    await expectThrows(() => new RpiSpi());
+    await expectThrows(() => RpiSpi());
   });
 
   test('invalid controller', () async {
-    await expectThrows(() => new Mcp3008(spi, 7, 24));
+    await expectThrows(() => Mcp3008(spi, 7, 24));
   });
 
   test('invalid chipSelectPin', () async {
-    await expectThrows(() => new Mcp3008(spi, 0, 0));
+    await expectThrows(() => Mcp3008(spi, 0, 0));
   });
 }

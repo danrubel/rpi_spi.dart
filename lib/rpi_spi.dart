@@ -11,22 +11,21 @@ class RpiSpi extends Spi {
   final _devices = <RpiSpiDevice>[];
 
   RpiSpi() {
-    if (_instantiatedSpi) throw new SpiException('RpiSpi already instantiated');
+    if (_instantiatedSpi) throw SpiException('RpiSpi already instantiated');
     _instantiatedSpi = true;
   }
 
   @override
   SpiDevice device(int controller, int chipSelectPin, int speed, int mode) {
     if (mode < 0 || mode > 3) {
-      throw new SpiException('invalid mode: $mode', controller, chipSelectPin);
+      throw SpiException('invalid mode: $mode', controller, chipSelectPin);
     }
     int chipSelect = allocateChipSelectPin(controller, chipSelectPin);
     int fd = _setupDevice(controller, chipSelect, speed, mode);
     if (fd < 0) {
-      throw new SpiException(
-          'device init failed: $fd', controller, chipSelectPin);
+      throw SpiException('device init failed: $fd', controller, chipSelectPin);
     }
-    final device = new RpiSpiDevice(fd, speed);
+    final device = RpiSpiDevice(fd, speed);
     _devices.add(device);
     return device;
   }
@@ -35,7 +34,7 @@ class RpiSpi extends Spi {
   void dispose() {
     while (_devices.isNotEmpty) {
       int result = _disposeDevice(_devices.removeLast()._fd);
-      if (result != 0) throw new SpiException('dispose failed: $result');
+      if (result != 0) throw SpiException('dispose failed: $result');
     }
   }
 
@@ -52,11 +51,11 @@ class RpiSpiDevice extends SpiDevice {
 
   @override
   Uint8List send(List<int> txData) {
-    if (txData.length > 40) throw new SpiException('max data len 40 bytes');
-    Uint8List rxData = new Uint8List(txData.length);
+    if (txData.length > 40) throw SpiException('max data len 40 bytes');
+    Uint8List rxData = Uint8List(txData.length);
     int result = _send(_fd, _speed, txData, rxData, txData.length);
     if (result < 0) {
-      throw new SpiException('send failed: $result');
+      throw SpiException('send failed: $result');
     }
     return rxData;
   }

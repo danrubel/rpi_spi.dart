@@ -17,7 +17,7 @@ abstract class Spi {
   /// This should be called by subclasses not clients.
   int allocateChipSelectPin(int controller, int chipSelectPin) {
     if (_allocatedChipSelectPins.contains(chipSelectPin)) {
-      throw new SpiException('Already allocated', controller, chipSelectPin);
+      throw SpiException('Already allocated', controller, chipSelectPin);
     }
     int chipSelect = -1;
     const chipSelectIndexes = [
@@ -28,7 +28,7 @@ abstract class Spi {
       chipSelect = chipSelectIndexes[controller].indexOf(chipSelectPin);
     }
     if (chipSelect == -1) {
-      throw new SpiException('invalid controller chip select combination',
+      throw SpiException('invalid controller chip select combination',
           controller, chipSelectPin);
     }
     _allocatedChipSelectPins.add(chipSelectPin);
@@ -89,7 +89,7 @@ class SpiException {
 
   @override
   String toString() {
-    final msg = new StringBuffer('SpiException($message');
+    final msg = StringBuffer('SpiException($message');
     if (controller != null) msg.write(', controller: $controller');
     if (chipSelectPin != null) msg.write(', chipSelectPin: $chipSelectPin');
     msg.write(')');
