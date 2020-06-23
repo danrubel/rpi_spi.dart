@@ -29,7 +29,7 @@ main(List<String> args) {
   final pub = File.fromUri(dartSdk.uri.resolve('bin/pub'));
   final pubOut =
       Process.runSync(pub.path, ['list-package-dirs']).stdout as String;
-  final pubResult = jsonDecode(pubOut) as Map<String, dynamic>;
+  Map<String, dynamic> pubResult = jsonDecode(pubOut) as Map<String, dynamic>;
   assertNoPubListError(pubResult);
   final dirName = pubResult['packages'][pkgName] as String;
   final pkgDir = Directory(dirName);
@@ -72,7 +72,8 @@ void abortIf(bool condition, String message) {
 void assertNoPubListError(Map<String, dynamic> pubResult) {
   var error = pubResult['error'];
   if (error == null) {
-    final packages = pubResult['packages'] as Map<String, dynamic>;
+    Map<String, dynamic> packages =
+        pubResult['packages'] as Map<String, dynamic>;
     if (packages != null) {
       var rpiGpio = packages[pkgName];
       if (rpiGpio != null) {

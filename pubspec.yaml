@@ -1,14 +1,14 @@
 name: rpi_spi
-version: 0.1.1
+version: 0.1.2
 author: Dan Rubel <danrubel@google.com>
 description: rpi_spi is a Dart library for using SPI on the Raspberry Pi.
 homepage: https://github.com/danrubel/rpi_spi.dart
 environment:
-  sdk: '>=2.3.0 <3.0.0'
+  sdk: '>=2.7.0 <3.0.0'
 dependencies:
   path: '>=1.0.0 <2.0.0'
 dev_dependencies:
   grinder: ^0.8.0
-  pedantic: ^1.1.0
+  pedantic: 1.8.0+1
   rpi_gpio: {path: ../rpi_gpio}
   test: ^1.2.0
