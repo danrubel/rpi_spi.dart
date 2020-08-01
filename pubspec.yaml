@@ -4,7 +4,7 @@ author: Dan Rubel <danrubel@google.com>
 description: rpi_spi is a Dart library for using SPI on the Raspberry Pi.
 homepage: https://github.com/danrubel/rpi_spi.dart
 environment:
-  sdk: '>=2.7.0 <3.0.0'
+  sdk: '>=2.8.4 <3.0.0'
 dependencies:
   path: '>=1.0.0 <2.0.0'
 dev_dependencies:
