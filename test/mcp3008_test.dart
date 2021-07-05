@@ -19,11 +19,11 @@ void runTests(Spi spi) {
   GpioOutput pin13;
   GpioOutput pin15;
 
-  setUpAll(() {
+  setUpAll(() async {
     // For these tests:
     // * pin 13 is connected to MCP3008 by a 4.7K resistor
     // * pin 15 is connected to MCP3008 by a 10K resistor.
-    gpio = RpiGpio();
+    gpio = await initialize_RpiGpio();
     pin13 = gpio.output(13);
     pin15 = gpio.output(15);
   });

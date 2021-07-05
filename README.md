@@ -36,15 +36,15 @@ you upgrade the rpi_spi package.
 2) From your application directory (the application that references
 the rpi_spi package) run the following command to build the native library
 ```
-    pub global run rpi_spi:build_lib
+    pub global run rpi_spi:build_native
 ```
 
 [pub global activate](https://www.dartlang.org/tools/pub/cmd/pub-global.html#activating-a-package)
 makes the Dart scripts in the rpi_spi/bin directory runnable
 from the command line.
 [pub global run](https://www.dartlang.org/tools/pub/cmd/pub-global.html#running-a-script)
-rpi_spi:build_lib runs the [rpi_spi/bin/build_lib.dart](bin/build_lib.dart)
-program which in turn calls the [build_lib](lib/src/native/build_lib) script
+rpi_spi:build_native runs the [rpi_spi/bin/build_native.dart](bin/build_native.dart)
+program which in turn calls the [build_native](lib/src/native/build_native) script
 to compile the native librpi_spi_ext.so library for the rpi_spi package.
 
 ## Example
