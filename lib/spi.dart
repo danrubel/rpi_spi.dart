@@ -82,8 +82,8 @@ abstract class SpiDevice {
 /// Exceptions thrown by I2C.
 class SpiException {
   final String message;
-  final int controller;
-  final int chipSelectPin;
+  final int? controller;
+  final int? chipSelectPin;
 
   SpiException(this.message, [this.controller, this.chipSelectPin]);
 

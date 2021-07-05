@@ -1,7 +1,6 @@
 # rpi_spi.dart
 
-[![pub package](https://img.shields.io/pub/v/rpi_spi.svg)](https://pub.dartlang.org/packages/rpi_ic2)
-[![Build Status](https://travis-ci.org/danrubel/rpi_spi.dart.svg?branch=master)](https://travis-ci.org/danrubel/rpi_spi.dart)
+[![pub package](https://img.shields.io/pub/v/rpi_spi.svg)](https://pub.dartlang.org/packages/rpi_spi)
 
 rpi_spi is a Dart package for using SPI on the Raspberry Pi.
 
@@ -11,7 +10,7 @@ rpi_spi is a Dart package for using SPI on the Raspberry Pi.
    using the [SPI protocol](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface)
 
  * The [__RpiSpi__](lib/rpi_spi.dart) library provides implementation of
-   the SPI protocol on the Raspberry Pi derived from the [WiringPi](http://wiringpi.com/) library.
+   the SPI protocol on the Raspberry Pi derived from the WiringPi library.
 
 ## Setup
 

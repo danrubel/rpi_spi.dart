@@ -14,10 +14,10 @@ main() {
 }
 
 void runTests(Spi spi) {
-  Mcp3008 mcp3008;
-  Gpio gpio;
-  GpioOutput pin13;
-  GpioOutput pin15;
+  late Mcp3008 mcp3008;
+  late Gpio gpio;
+  late GpioOutput pin13;
+  late GpioOutput pin15;
 
   setUpAll(() async {
     // For these tests:

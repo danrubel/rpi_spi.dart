@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.0
+* migrate to null safety
+
 ## 0.2.0
 * loosen SDK requirements to allow execution on older Rasberry Pi models
 * migrate dependencies to use rpi_gpio ^0.6.0
