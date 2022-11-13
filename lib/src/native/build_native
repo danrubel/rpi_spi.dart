@@ -1,11 +1,5 @@
 #!/bin/sh
 #
-# Build the librpi_spi_ext.so native library on the Raspberry Pi.
-# The generated native library file is referenced by rpi_spi.dart via
-# import 'dart-ext:rpi_spi_ext'
-#
-# Arguments: <buildScriptVersion> <DartSdkPath>
-#
 # Typically, this script is run by calling
 #
 #    pub global run rpi_spi:build_native
@@ -15,20 +9,17 @@
 # exit on error
 set -e
 
-#DARTVM=$(readlink `which dart`)
-#DARTBIN=$(dirname $DARTVM)
-#DARTSDK=$(dirname $DARTBIN)
-DARTSDK=$2
-
 cd $(dirname $0)
 echo building rpi_spi in `pwd`
 
 ####################################################################
 # Build rpi_spi native library
 
-g++ -fPIC -I$DARTSDK/ -c rpi_spi_ext.cc
+g++ -fPIC -c rpi_spi_ext.cc
 # use --no-undefined to check for missing libraries
 gcc -shared -lpthread -Wl,-soname,librpi_spi_ext.so -o librpi_spi_ext.so rpi_spi_ext.o
 
-# Copy the library
-cp librpi_spi_ext.so ../../librpi_spi_ext.so
+# echo "exported symbols"
+# nm -g librpi_spi_ext.so | grep ' T '
+
+echo "gcc build complete"

@@ -19,7 +19,7 @@ abstract class Spi {
     if (_allocatedChipSelectPins.contains(chipSelectPin)) {
       throw SpiException('Already allocated', controller, chipSelectPin);
     }
-    int chipSelect = -1;
+    var chipSelect = -1;
     const chipSelectIndexes = [
       /* controller 0 */ [24, 26],
       /* controller 1 */ // [12, 11, 36], not supported

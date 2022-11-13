@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0
+* convert code to use dart:ffi
+* extract and generate native library API
+* add `platforms` to pubspec indicating only Linux is supported
+* tested on RPi 4 with Dart 2.12, 2.13, 2.18
+
 ## 0.3.0
 * migrate to null safety
 
